@@ -1,1 +1,70 @@
-github.data96.com successful.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>github.data96.com 状态</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        success: '#10b981',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
+        <div class="mb-6">
+            <i class="fa fa-check-circle text-success text-5xl"></i>
+        </div>
+        
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">操作成功</h1>
+        
+        <div id="statusInfo" class="p-4 bg-green-50 rounded-lg border border-green-100 mb-6">
+            <p class="text-gray-800 text-lg"></p>
+        </div>
+        
+        <div class="text-sm text-gray-500">
+            <p>最后更新时间: <span id="updateTime"></span></p>
+        </div>
+        
+        <button onclick="refreshStatus()" class="mt-6 bg-success hover:bg-success/90 text-white font-medium py-2 px-6 rounded-lg transition-all">
+            <i class="fa fa-refresh mr-2"></i> 刷新状态
+        </button>
+    </div>
+
+    <script>
+        function updateStatus() {
+            // 获取当前时间
+            const now = new Date();
+            const timeString = now.toLocaleString();
+            
+            // 显示指定信息
+            const statusText = `github.data96.com successful.`;
+            
+            // 更新页面显示
+            document.querySelector('#statusInfo p').textContent = statusText;
+            document.getElementById('updateTime').textContent = timeString;
+        }
+        
+        function refreshStatus() {
+            updateStatus();
+            // 添加刷新动画效果
+            const statusElement = document.getElementById('statusInfo');
+            statusElement.classList.add('animate-pulse');
+            setTimeout(() => {
+                statusElement.classList.remove('animate-pulse');
+            }, 500);
+        }
+        
+        // 页面加载时显示信息
+        window.onload = updateStatus;
+    </script>
+</body>
+</html>
